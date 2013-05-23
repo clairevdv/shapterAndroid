@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Shapter</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="discover">Découvrir</string>
+    <string name="identification">S\'identifier</string>
+    <string name="title_activity_discovery">Découverte de Shapter</string>
+
+</resources>
