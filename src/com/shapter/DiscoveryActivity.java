@@ -1,8 +1,12 @@
 package com.shapter;
 
+import java.util.List;
+
+import testBDD.*;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -16,6 +20,23 @@ public class DiscoveryActivity extends Activity {
         setContentView(R.layout.activity_discovery);
         // Show the Up button in the action bar.
         setupActionBar();
+
+        
+        // Test de la BDD
+        CoursDAO cDAO = new CoursDAO(this);
+        
+        Cours c1 = new Cours(1, "3D");
+        Cours c2 = new Cours(2, "Image");
+        Cours c3 = new Cours(3, "Projet libre");
+        
+        cDAO.open();
+        
+        cDAO.insertCours(c1);
+        cDAO.insertCours(c2);
+        cDAO.insertCours(c3);
+                
+        List listeCours = cDAO.showTable();
+        cDAO.close();
     }
 
     /**
