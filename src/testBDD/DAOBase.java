@@ -1,6 +1,7 @@
 package testBDD;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public abstract class DAOBase {
