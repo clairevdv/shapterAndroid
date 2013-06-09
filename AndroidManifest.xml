@@ -22,18 +22,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"
+        <activity
+            android:name="com.shapter.LoginActivity"
             android:label="@string/title_activity_login"
-            android:windowSoftInputMode="adjustResize|stateVisible"
-            android:parentActivityName="com.shapter.MainActivity">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
+            android:parentActivityName="com.shapter.MainActivity"
+            android:windowSoftInputMode="adjustResize|stateVisible" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.shapter.MainActivity" />
         </activity>
-        <activity android:name=".DiscoveryActivity"
+        <activity
+            android:name="com.shapter.DiscoveryActivity"
             android:label="@string/title_activity_discovery"
-            android:parentActivityName="com.shapter.MainActivity">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
+            android:parentActivityName="com.shapter.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.shapter.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.shapter.DescriptionUEActivity"
+            android:label="@string/title_activity_description_ue"
+            android:parentActivityName="DiscoveryActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="DiscoveryActivity" />
         </activity>
     </application>
+
 </manifest>
