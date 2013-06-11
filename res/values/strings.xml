@@ -6,8 +6,14 @@
     <string name="hello_world">Hello world!</string>
     <string name="ue">Les UE de Télécom Paristech</string>
     <string name="discover">Découvrir</string>
+    <string name="recherche">Rechercher&#8230;</string>
     <string name="identification">S\'identifier</string>
     <string name="title_activity_discovery">Découverte de Shapter</string>
     <string name="title_activity_description_ue">Description de l\'UE</string>
+    <string name="title_activity_loged">Vous êtes bien connectés !</string>
+    <string name="mail">Email utilisateur</string>
+    <string name="mail_cible">Email bdd</string>
+    <string name="mdp">Mdp utilisateur</string>
+    <string name="mdp_cible">Mdp base de donnees</string>
 
 </resources>

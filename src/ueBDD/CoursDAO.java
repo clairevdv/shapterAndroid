@@ -3,6 +3,8 @@ package ueBDD;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
+import android.util.Log;
 
 public class CoursDAO extends DAOBase{
 
@@ -11,14 +13,14 @@ public class CoursDAO extends DAOBase{
 	}
 
 	private static final String TABLE_NAME = "UE";
-	private static final String KEY = "id";
+	private static final String KEY = "_id";
 	private static final String PARCOURS_UE = "parcours";
 	private static final String TITRE_UE = "titreUE";
 	private static final String DESCRIPTION_UE = "description";
 
 	public void insertCours(Cours UE){
 		// On verifie que la ligne n'y est pas deja
-		Cursor c = mDb.rawQuery("select * from " + TABLE_NAME + " where titreUE like ?", new String[] {String.valueOf(UE.getTitreUE())});
+		Cursor c = mDb.rawQuery("select * from " + TABLE_NAME + " where " + TITRE_UE + " like ?", new String[] {String.valueOf(UE.getTitreUE())});
 
 		if (c.getCount() == 0) {
 			//Création d'un ContentValues
@@ -59,27 +61,34 @@ public class CoursDAO extends DAOBase{
 		//Suppression d'une UE de la BDD grâce à son index
 		mDb.delete(TABLE_NAME, KEY + " = ?", new String[] {String.valueOf(id)});
 	}
-	
-	public String rowidToDescription (long id) {
-		Cursor c = mDb.rawQuery("select description from " + TABLE_NAME + " where rowid like ?", new String[] {String.valueOf(id)});
-		if (c.getCount() == 0) {
-			System.out.println("Pas d'UE correspondante a l'UE choisie");
-			return null;
-		}
-
-		c.moveToFirst();
-		String titreUE = c.getString(0);
-		c.close();
-		
-		return titreUE;
-	}
 
 	public Cursor recupererTable() {
+		System.out.println("Affichons la database");
 		Cursor c = mDb.rawQuery("select rowid _id,* from " + TABLE_NAME + " order by " + PARCOURS_UE, null);
 		if(c.getCount() == 0) {
 			System.out.println("Table Vide");
 			return null;
 		}
 		return c;  
+	}
+
+	// En cas de recherche, on filtre les UE affichees
+	public Cursor ueByNom(String nomUE) throws SQLException {
+		Log.w("CoursDAO", nomUE);
+		Cursor mCursor = null;
+		// Si la recherche est nulle
+		if (nomUE == null  ||  nomUE.length () == 0)  {
+			mCursor = mDb.rawQuery("select rowid _id,* from " + TABLE_NAME, null);
+		}
+		// sinon
+		else {
+			mCursor = mDb.rawQuery("select rowid _id,* from " + TABLE_NAME + " where " + TITRE_UE + " like '%" + nomUE + "%'", null);
+			System.out.println("J'ai enregistré la requête");
+		}
+		if (mCursor != null) {
+			mCursor.moveToFirst();
+			System.out.println("Et j'ai un résultat");
+		}
+		return mCursor;
 	}
 }

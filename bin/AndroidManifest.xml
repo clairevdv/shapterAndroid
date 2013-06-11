@@ -47,6 +47,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="DiscoveryActivity" />
         </activity>
+        <activity
+            android:name="com.shapter.LogedActivity"
+            android:label="@string/title_activity_loged"
+            android:parentActivityName="LoginActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="LoginActivity" />
+        </activity>
     </application>
 
 </manifest>

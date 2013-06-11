@@ -1,15 +1,14 @@
 package com.shapter;
 
-import ueBDD.CoursDAO;
-import android.os.Bundle;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.support.v4.app.NavUtils;
-import android.annotation.TargetApi;
-import android.content.Intent;
-import android.os.Build;
 
 public class DescriptionUEActivity extends Activity {
 
@@ -23,13 +22,7 @@ public class DescriptionUEActivity extends Activity {
 		TextView description = (TextView) findViewById(R.id.descriptionUE);
 		Intent intent = getIntent();
 		if (intent != null) {
-			String stringRowid = intent.getStringExtra("nomUE");
-			long rowid = Long.valueOf(stringRowid);
-			CoursDAO cDAO = new CoursDAO(this);
-			cDAO.open();
-			String descriptionUE = cDAO.rowidToDescription(rowid);
-			cDAO.close();
-			
+			String descriptionUE = intent.getStringExtra("descriptionUE");
 			description.setText(descriptionUE);
 		}
 		else

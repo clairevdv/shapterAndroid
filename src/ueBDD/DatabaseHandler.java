@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHandler extends SQLiteOpenHelper{
 	private static final String TABLE_NAME = "UE";
-	private static final String KEY = "id";
+	private static final String KEY = "_id";
 	private static final String COLUMN1 = "parcours";
 	private static final String COLUMN2 = "titreUE";
 	private static final String COLUMN3 = "description";
@@ -31,12 +31,13 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		onCreate(db);
 	}
 	
-	/*
+	
 	@Override
 	 public void onOpen(SQLiteDatabase db) {
 		db.execSQL(DROP_TABLE_COURS);
+		db.execSQL("DELETE FROM SQLITE_SEQUENCE WHERE NAME = '" + TABLE_NAME + "'");
 		onCreate(db);
-	} */
+	}
 	
 	public static String getTableName() {return TABLE_NAME;}
 	public static String getKey() {return KEY;}

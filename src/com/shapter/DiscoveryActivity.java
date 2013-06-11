@@ -10,14 +10,22 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.EditText;
+import android.widget.FilterQueryProvider;
 import android.widget.ListView;
 
 public class DiscoveryActivity extends Activity {
 	@SuppressLint("NewApi")
+
+	private CoursDAO cDAO;
+	private SimpleCursorAdapter dataAdapter;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -26,20 +34,22 @@ public class DiscoveryActivity extends Activity {
 		setupActionBar();
 
 		// Test de la BDD
-		CoursDAO cDAO = new CoursDAO(this);
+		cDAO = new CoursDAO(this);
 		cDAO.open();
 		cDAO.initialiserTest();
 
-		// On affiche la base de donnees
+		afficherCours();
+	}
+
+	private void afficherCours() {
+		// On cree un adapteur de la bdd a une listView
 		Cursor listeCours = cDAO.recupererTable();
 		String[] colonnes = new String[] {DatabaseHandler.getColumn1(),DatabaseHandler.getColumn2()};
-
 		int[] textViewAModifier = new int[] {
 				R.id.parcours,
 				R.id.titreUE,
 		};
-
-		SimpleCursorAdapter dataAdapter = new SimpleCursorAdapter(
+		dataAdapter = new SimpleCursorAdapter(
 				this, R.layout.activity_liste_ue,
 				listeCours,
 				colonnes,
@@ -52,20 +62,40 @@ public class DiscoveryActivity extends Activity {
 		listView.setAdapter(dataAdapter);
 
 		// On ouvre la vue de description au clic sur l'UE
-		OnItemClickListener ouvrirDescription = new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
+		listView.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
+				// On recupere la description a afficher
+				Cursor cursor = (Cursor) listView.getItemAtPosition(position);
+				String descriptif = cursor.getString(cursor.getColumnIndexOrThrow("description"));
 				
+				// On la lance dans une nouvelle activite
 				Intent descriptionUE = new Intent(DiscoveryActivity.this,DescriptionUEActivity.class);
-				String idToString = String.valueOf(id);
-				descriptionUE.putExtra("nomUE", idToString);
+				descriptionUE.putExtra("descriptionUE", descriptif);
 				startActivity(descriptionUE);
 				finish();
 			}
-		};
-		listView.setOnItemClickListener(ouvrirDescription);
+		});
 
-		cDAO.close();
+		// On cree un systeme de recherche d'UE
+		EditText myFilter = (EditText) findViewById(R.id.myFilter);
+		TextWatcher textWatcher = new TextWatcher() {
+			public void afterTextChanged(Editable s) {
+			}
+			public void beforeTextChanged(CharSequence s, int start,
+					int count, int after) {
+			}
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				dataAdapter.getFilter().filter(s.toString());
+			}
+		};
+		myFilter.addTextChangedListener(textWatcher);
+
+		FilterQueryProvider query = new FilterQueryProvider() {
+			public Cursor runQuery(CharSequence constraint) {
+				return cDAO.ueByNom(constraint.toString());
+			}
+		};
+		dataAdapter.setFilterQueryProvider(query);
 	}
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
