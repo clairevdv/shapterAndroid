@@ -1,5 +1,6 @@
 package com.shapter;
 
+import testConnection.ConnexionActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +15,10 @@ public class MainActivity extends Activity {
 	
 	public void discover(View view) {
 	    // Do something in response to button
-		Intent intentDiscovery = new Intent(this, DiscoveryActivity.class);
-		startActivity(intentDiscovery);
+		/*Intent intentDiscovery = new Intent(this, DiscoveryActivity.class);
+		startActivity(intentDiscovery);*/
+		Intent intentConnexion = new Intent(this, ConnexionActivity.class);
+		startActivity(intentConnexion);
 	}
 	
 	public void login(View view) {

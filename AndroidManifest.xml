@@ -55,6 +55,34 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="LoginActivity" />
         </activity>
+        <activity
+            android:name="testConnection.TestActivity"
+            android:label="@string/title_activity_test"
+            android:parentActivityName="com.shapter.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.shapter.MainActivity" />
+        </activity>
+        <activity
+            android:name="testConnection.ConnexionActivity"
+            android:label="@string/title_activity_connexion"
+            android:parentActivityName="com.shapter.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.shapter.MainActivity" />
+        </activity>
+        <activity
+            android:name="testConnection.AllProductsActivity"
+            android:label="@string/title_activity_all_products" >
+        </activity>
+        <activity
+            android:name="testConnection.NewProductActivity"
+            android:label="@string/title_activity_new_product" >
+        </activity>
+        <activity
+            android:name="testConnection.EditProductActivity"
+            android:label="@string/title_activity_edit_product" >
+        </activity>
     </application>
 
 </manifest>
