@@ -1,27 +1,18 @@
 package com.shapter;
 
-import java.io.IOException;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-
 import ueBDD.CoursDAO;
 import ueBDD.DatabaseHandler;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import android.app.ListActivity;
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -31,7 +22,7 @@ import android.widget.FilterQueryProvider;
 import android.widget.ListView;
 
 @SuppressLint("NewApi")
-public class DiscoveryActivity extends ListActivity {
+public class DiscoveryActivity extends Activity {
 
 	private CoursDAO cDAO;
 	private SimpleCursorAdapter dataAdapter;
@@ -39,7 +30,7 @@ public class DiscoveryActivity extends ListActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// setContentView(R.layout.activity_discovery);
+		setContentView(R.layout.activity_discovery);
 		// Show the Up button in the action bar.
 		setupActionBar();
 
