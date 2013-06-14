@@ -1,41 +1,26 @@
 package com.shapter;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
+import java.io.IOException;
 
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.HttpConnectionParams;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import ueBDD.CoursDAO;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.ListActivity;
-import android.net.ParseException;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
 
+@SuppressLint("NewApi")
 public class DiscoveryActivity extends ListActivity {
-	@SuppressLint("NewApi")
 
 	private CoursDAO cDAO;
 	private SimpleCursorAdapter dataAdapter;
@@ -47,66 +32,6 @@ public class DiscoveryActivity extends ListActivity {
 		// Show the Up button in the action bar.
 		setupActionBar();
 
-		TextView tv = (TextView) findViewById(R.id.titre_activity_discovery);
-		String result = null;
-		InputStream is = null;
-		JSONObject json_data=null;
-		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-		ArrayList<String> donnees = new ArrayList<String>();
-
-		//commandes httpClient : interroger la branche locale
-		try{
-			HttpClient httpclient = new DefaultHttpClient();
-			HttpConnectionParams.setConnectionTimeout(httpclient.getParams(), 15000);
-			HttpPost httppost = new HttpPost("http://10.0.2.2:8080/connectBDD.php");
-			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-			HttpResponse response = httpclient.execute(httppost);
-			HttpEntity entity = response.getEntity();
-			is = entity.getContent();
-		}
-		catch(Exception e){
-			Log.i("taghttppost",""+e.toString());
-			Toast.makeText(getBaseContext(),e.toString() ,Toast.LENGTH_LONG).show();
-		}
-
-		//conversion de la réponse en chaine de caractère
-		try
-		{
-			BufferedReader reader = new BufferedReader(new InputStreamReader(is,"UTF-8"));
-			StringBuilder sb  = new StringBuilder();
-			String line = null;
-			while ((line = reader.readLine()) != null)
-			{
-				sb.append(line + "\n");
-			}
-			is.close();
-			result = sb.toString();
-		}
-		catch(Exception e)
-		{
-			Log.i("tagconvertstr",""+e.toString());
-		}
-		
-		//recuperation des donnees json
-		try{
-			JSONArray jArray = new JSONArray(result);
-			for(int i=0;i<jArray.length();i++)
-			{
-				json_data = jArray.getJSONObject(i);
-				Log.i("log_tag","id: "+json_data.getInt("id"));
-				donnees.add(json_data.getString("title"));
-				//r.add(json_data.getString("categorie"));
-			}
-			setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, donnees));
-		}
-		catch(JSONException e){
-			Log.i("tagjsonexp",""+e.toString());
-		} catch (ParseException e) {
-			Log.i("tagjsonpars",""+e.toString());
-		}
-
-
-		/*
 		// Test de la BDD
 		cDAO = new CoursDAO(this);
 		cDAO.open();
@@ -169,7 +94,27 @@ public class DiscoveryActivity extends ListActivity {
 				return cDAO.ueByNom(constraint.toString());
 			}
 		};
-		dataAdapter.setFilterQueryProvider(query); */
+		dataAdapter.setFilterQueryProvider(query);
+	} 
+
+	private class Connection extends AsyncTask {
+		@Override
+		protected Object doInBackground(Object... arg0) {
+			connect();
+			return null;
+		}
+	}
+
+	private void connect() {
+		try {
+			DefaultHttpClient client = new DefaultHttpClient();
+			HttpGet request = new HttpGet("http://www.google.com");
+			HttpResponse response = client.execute(request);
+		} catch (ClientProtocolException e) {
+			Log.d("HTTPCLIENT", e.getLocalizedMessage());
+		} catch (IOException e) {
+			Log.d("HTTPCLIENT", e.getLocalizedMessage());
+		}
 	}
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
