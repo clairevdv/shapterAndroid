@@ -56,6 +56,7 @@ public class DiscoveryActivity extends ListActivity {
 	private String connect() {
 		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 		System.out.println("Je tente de me connecter");
+		
 		//commandes httpClient : interroger la branche locale
 		try{
 			HttpClient httpclient = new DefaultHttpClient();
@@ -71,7 +72,6 @@ public class DiscoveryActivity extends ListActivity {
 			Log.e("log_tag","Error in http connection"+e.toString());
 		}
 
-		System.out.println("Ok pour le http");
 		//conversion de la réponse en chaine de caractère
 		try
 		{
@@ -89,7 +89,7 @@ public class DiscoveryActivity extends ListActivity {
 		{
 			Log.e("log_tag","Error converting result"+e.toString());
 		}
-		System.out.println("Reponse convertie");
+
 		//paring data 
 		int ct_id; 
 		String ct_name; 

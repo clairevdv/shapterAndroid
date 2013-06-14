@@ -26,16 +26,10 @@ import android.widget.TextView;
 import com.shapter.R;
 
 public class AllProductsActivity extends ListActivity {
-	// Progress Dialog
     private ProgressDialog pDialog;
- 
-    // Creating JSON Parser object
     JSONParser jParser = new JSONParser();
- 
     ArrayList<HashMap<String, String>> productsList;
- 
-    // url to get all products list
-    private static String url_all_products = "http://api.androidhive.info/android_connect/get_all_products.php";
+    private static String url_all_products = "http://10.0.0.2/android_connection/get_all_products.php";
  
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
