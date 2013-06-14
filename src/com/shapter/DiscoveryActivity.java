@@ -1,6 +1,7 @@
 package com.shapter;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -8,8 +9,10 @@ import java.util.ArrayList;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.HttpConnectionParams;
@@ -21,11 +24,11 @@ import ueBDD.CoursDAO;
 import ueBDD.DatabaseHandler;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.ParseException;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -62,7 +65,7 @@ public class DiscoveryActivity extends ListActivity {
 		new Connection().execute();
 		System.out.println("ok !");
 
-		//TODO : modifier pour le faire proprement avec AsyncTask http://stackoverflow.com/questions/6343166/android-os-networkonmainthreadexception
+/*		//TODO : modifier pour le faire proprement avec AsyncTask http://stackoverflow.com/questions/6343166/android-os-networkonmainthreadexception
 		if (android.os.Build.VERSION.SDK_INT > 9) {
 			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 			StrictMode.setThreadPolicy(policy);
@@ -126,64 +129,27 @@ public class DiscoveryActivity extends ListActivity {
 			Log.i("tagjsonexp",""+e.toString());
 		} catch (ParseException e) {
 			Log.i("tagjsonpars",""+e.toString());
-		} 
+		}  */
+	}
+	
+	private class Connection extends AsyncTask {
+		@Override
+		protected Object doInBackground(Object... arg0) {
+			connect();
+			return null;
+		}
 	}
 
-	private void afficherCours() {
-		// On cree un adapteur de la bdd a une listView
-		Cursor listeCours = cDAO.recupererTable();
-		String[] colonnes = new String[] {DatabaseHandler.getColumn1(),DatabaseHandler.getColumn2()};
-		int[] textViewAModifier = new int[] {
-				R.id.parcours,
-				R.id.titreUE,
-		};
-		dataAdapter = new SimpleCursorAdapter(
-				this, R.layout.activity_liste_ue,
-				listeCours,
-				colonnes,
-				textViewAModifier,
-				0);
-		dataAdapter.notifyDataSetChanged ();
-
-		// On assigne l'adapteur a la ListView
-		ListView listView = (ListView) findViewById(R.id.listViewCours);
-		listView.setAdapter(dataAdapter);
-
-		// On ouvre la vue de description au clic sur l'UE
-		listView.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
-				// On recupere la description a afficher
-				Cursor cursor = (Cursor) listView.getItemAtPosition(position);
-				String descriptif = cursor.getString(cursor.getColumnIndexOrThrow("description"));
-
-				// On la lance dans une nouvelle activite
-				Intent descriptionUE = new Intent(DiscoveryActivity.this,DescriptionUEActivity.class);
-				descriptionUE.putExtra("descriptionUE", descriptif);
-				startActivity(descriptionUE);
-				finish();
-			}
-		});
-
-		// On cree un systeme de recherche d'UE
-		EditText myFilter = (EditText) findViewById(R.id.myFilter);
-		TextWatcher textWatcher = new TextWatcher() {
-			public void afterTextChanged(Editable s) {
-			}
-			public void beforeTextChanged(CharSequence s, int start,
-					int count, int after) {
-			}
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				dataAdapter.getFilter().filter(s.toString());
-			}
-		};
-		myFilter.addTextChangedListener(textWatcher);
-
-		FilterQueryProvider query = new FilterQueryProvider() {
-			public Cursor runQuery(CharSequence constraint) {
-				return cDAO.ueByNom(constraint.toString());
-			}
-		};
-		dataAdapter.setFilterQueryProvider(query);
+	private void connect() {
+		try {
+			DefaultHttpClient client = new DefaultHttpClient();
+			HttpGet request = new HttpGet("http://www.google.com");
+			HttpResponse response = client.execute(request);
+		} catch (ClientProtocolException e) {
+			Log.d("HTTPCLIENT", e.getLocalizedMessage());
+		} catch (IOException e) {
+			Log.d("HTTPCLIENT", e.getLocalizedMessage());
+		}
 	}
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)

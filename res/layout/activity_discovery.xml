@@ -6,6 +6,7 @@
     tools:context=".DiscoveryActivity" >
 
     <TextView
+        android:id="@+id/titre_activity_discovery"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/ue" />
