@@ -16,8 +16,6 @@ public class MainActivity extends Activity {
 	    // Do something in response to button
 		Intent intentDiscovery = new Intent(this, DiscoveryActivity.class);
 		startActivity(intentDiscovery);
-		//Intent intentConnexion = new Intent(this, ConnexionActivity.class);
-		//startActivity(intentConnexion);
 	}
 	
 	public void login(View view) {

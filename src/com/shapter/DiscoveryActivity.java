@@ -39,7 +39,6 @@ public class DiscoveryActivity extends ListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_discovery);
-		// Show the Up button in the action bar.
 		setupActionBar();
 
 		new Connection().execute();
