@@ -8,16 +8,27 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import ueBDD.CoursDAO;
+import ueBDD.DatabaseHandler;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.ListActivity;
+import android.content.Intent;
+import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.EditText;
+import android.widget.FilterQueryProvider;
+import android.widget.ListView;
 
 @SuppressLint("NewApi")
 public class DiscoveryActivity extends ListActivity {
@@ -95,26 +106,6 @@ public class DiscoveryActivity extends ListActivity {
 			}
 		};
 		dataAdapter.setFilterQueryProvider(query);
-	} 
-
-	private class Connection extends AsyncTask {
-		@Override
-		protected Object doInBackground(Object... arg0) {
-			connect();
-			return null;
-		}
-	}
-
-	private void connect() {
-		try {
-			DefaultHttpClient client = new DefaultHttpClient();
-			HttpGet request = new HttpGet("http://www.google.com");
-			HttpResponse response = client.execute(request);
-		} catch (ClientProtocolException e) {
-			Log.d("HTTPCLIENT", e.getLocalizedMessage());
-		} catch (IOException e) {
-			Log.d("HTTPCLIENT", e.getLocalizedMessage());
-		}
 	}
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
