@@ -41,7 +41,60 @@ public class DiscoveryActivity extends ListActivity {
 		setContentView(R.layout.activity_discovery);
 		setupActionBar();
 
-		new Connection().execute();
+		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+		System.out.println("Je tente de me connecter");
+		
+		//commandes httpClient : interroger la branche locale
+		try{
+			HttpClient httpclient = new DefaultHttpClient();
+			//HttpConnectionParams.setConnectionTimeout(httpclient.getParams(), 15000);
+			HttpPost httppost = new HttpPost("http://10.0.2.2:8080/connectBDD.php");
+			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+			HttpResponse response = httpclient.execute(httppost);
+			HttpEntity entity = response.getEntity();
+			is = entity.getContent();
+		}
+		catch(Exception e){
+			Log.e("log_tag","Error in http connection "+e.toString());
+		}
+
+		//conversion de la réponse en chaine de caractère
+		try
+		{
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is,"UTF-8"));
+			sb  = new StringBuilder();
+			String line = null;
+			while ((line = reader.readLine()) != null)
+			{
+				sb.append(line + "\n");
+			}
+			is.close();
+			result = sb.toString();
+		}
+		catch(Exception e)
+		{
+			Log.e("log_tag","Error converting result"+e.toString());
+		}
+
+		//paring data 
+		int ct_id; 
+		String ct_name; 
+		try{ 
+			jArray = new JSONArray(result); 
+			JSONObject json_data=null; 
+			for(int i=0;i<jArray.length();i++){ 
+				json_data = jArray.getJSONObject(i); 
+				ct_id=json_data.getInt("id"); 
+				ct_name=json_data.getString("titreUE"); 
+			} 
+		} 
+		catch(JSONException e1){ 
+			Toast.makeText(getBaseContext(), "Pas d'UE trouvee" ,Toast.LENGTH_LONG).show(); 
+		} 
+		catch (ParseException e1) { 
+			e1.printStackTrace(); 
+		} 
+		//new Connection().execute();
 	}
 
 	private class Connection extends AsyncTask {
@@ -60,8 +113,7 @@ public class DiscoveryActivity extends ListActivity {
 		try{
 			HttpClient httpclient = new DefaultHttpClient();
 			//HttpConnectionParams.setConnectionTimeout(httpclient.getParams(), 15000);
-			//HttpPost httppost = new HttpPost("http://10.0.2.2:8080/connectBDD.php");
-			HttpPost httppost = new HttpPost("http://137.194.22.82:8080/connectBDD.php");
+			HttpPost httppost = new HttpPost("http://10.0.2.2:8080/connectBDD.php");
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 			HttpResponse response = httpclient.execute(httppost);
 			HttpEntity entity = response.getEntity();
