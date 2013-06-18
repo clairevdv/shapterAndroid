@@ -1,0 +1,42 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".UEActivity" >
+
+    <TextView
+        android:id="@+id/titre_activity_discovery"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ue" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:orientation="horizontal" >
+
+        <Spinner
+            android:id="@+id/choixEcole"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".70" />
+
+        <EditText
+            android:id="@+id/myFilter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/recherche"
+            android:layout_weight=".30" >
+
+            <requestFocus />
+        </EditText>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listViewCours"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+</LinearLayout>

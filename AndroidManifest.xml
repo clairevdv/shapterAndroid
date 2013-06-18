@@ -5,10 +5,10 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="17" />
-    
-    <uses-permission android:name="android.permission.INTERNET" /> 
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -17,7 +17,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.shapter.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Holo.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,13 +29,14 @@
             android:name="com.shapter.LoginActivity"
             android:label="@string/title_activity_login"
             android:parentActivityName="com.shapter.MainActivity"
-            android:windowSoftInputMode="adjustResize|stateVisible" >
+            android:windowSoftInputMode="adjustResize|stateVisible"
+            android:theme="@android:style/Theme.Holo.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.shapter.MainActivity" />
         </activity>
         <activity
-            android:name="com.shapter.DiscoveryActivity"
+            android:name="com.shapter.UEActivity"
             android:label="@string/title_activity_discovery"
             android:parentActivityName="com.shapter.MainActivity" >
             <meta-data
@@ -56,6 +58,14 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="LoginActivity" />
+        </activity>
+        <activity
+            android:name="com.shapter.DiscoveryActivity"
+            android:label="@string/title_activity_discovery"
+            android:parentActivityName="com.shapter.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.shapter.MainActivity" />
         </activity>
     </application>
 

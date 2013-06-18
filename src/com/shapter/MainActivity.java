@@ -14,7 +14,7 @@ public class MainActivity extends Activity {
 	
 	public void discover(View view) {
 	    // Do something in response to button
-		Intent intentDiscovery = new Intent(this, DiscoveryActivity.class);
+		Intent intentDiscovery = new Intent(this, UEActivity.class);
 		startActivity(intentDiscovery);
 	}
 	
