@@ -4,6 +4,11 @@
     <string name="app_name">Shapter</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="menu_ue">UEs</string>
+    <string name="menu_ecole">Ecoles</string>
+    <string name="menu_eleves">Elèves</string>
+    <string name="menu_login">Login</string>
+    <string name="menu_plus">Plus</string>
     <string name="ue">Les UE disponibles</string>
     <string name="discover">Découvrir</string>
     <string name="recherche">Rechercher&#8230;</string>

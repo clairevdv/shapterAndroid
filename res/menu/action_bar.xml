@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_ue"
+        android:icon="@drawable/ic_menu_ue"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/menu_ue"/>
+    <item
+        android:id="@+id/menu_ecole"
+        android:icon="@drawable/ic_menu_ecole"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/menu_ecole"/>
+    <item
+        android:id="@+id/menu_eleves"
+        android:icon="@drawable/ic_menu_eleves"
+        android:showAsAction="ifRoom"
+        android:title="@string/menu_eleves"/>
+    <item
+        android:id="@+id/menu_login"
+        android:icon="@drawable/ic_menu_login"
+        android:showAsAction="always"
+        android:title="@string/menu_login"/>
+    <item
+        android:id="@+id/menu_plus"
+        android:icon="@drawable/ic_menu_overflow"
+        android:showAsAction="never"
+        android:title="@string/menu_plus"/>
+
+</menu>

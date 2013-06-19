@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="8"
         android:targetSdkVersion="17" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,11 +14,10 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppBaseTheme" >
         <activity
             android:name="com.shapter.MainActivity"
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.Holo.NoActionBar" >
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,8 +28,7 @@
             android:name="com.shapter.LoginActivity"
             android:label="@string/title_activity_login"
             android:parentActivityName="com.shapter.MainActivity"
-            android:windowSoftInputMode="adjustResize|stateVisible"
-            android:theme="@android:style/Theme.Holo.NoActionBar" >
+            android:windowSoftInputMode="adjustResize|stateVisible" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.shapter.MainActivity" />
