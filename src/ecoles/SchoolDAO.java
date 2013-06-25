@@ -1,4 +1,6 @@
-package ueBDD;
+package ecoles;
+
+import com.shapter.DAOBase;
 
 import android.content.ContentValues;
 import android.content.Context;

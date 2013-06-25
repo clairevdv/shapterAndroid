@@ -1,8 +1,10 @@
-package ueBDD;
+package login;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+
+import com.shapter.DAOBase;
 
 public class UserDAO extends DAOBase {
 

@@ -1,4 +1,4 @@
-package ueBDD;
+package ecoles;
 
 public class School {
 	private int id;

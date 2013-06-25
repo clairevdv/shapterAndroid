@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.shapter.LoginActivity"
+            android:name="login.LoginActivity"
             android:label="@string/title_activity_login"
             android:parentActivityName="com.shapter.MainActivity"
             android:windowSoftInputMode="adjustResize|stateVisible" >
@@ -34,7 +34,7 @@
                 android:value="com.shapter.MainActivity" />
         </activity>
         <activity
-            android:name="com.shapter.UEActivity"
+            android:name="ue.UEActivity"
             android:label="@string/title_activity_discovery"
             android:parentActivityName="com.shapter.MainActivity" >
             <meta-data
@@ -42,7 +42,7 @@
                 android:value="com.shapter.MainActivity" />
         </activity>
         <activity
-            android:name="com.shapter.DescriptionUEActivity"
+            android:name="ue.DescriptionUEActivity"
             android:label="@string/title_activity_description_ue"
             android:parentActivityName="DiscoveryActivity" >
             <meta-data
@@ -66,7 +66,7 @@
                 android:value="com.shapter.MainActivity" />
         </activity>
         <activity
-            android:name="com.shapter.SchoolActivity"
+            android:name="ecoles.SchoolActivity"
             android:label="@string/title_activity_school"
             android:parentActivityName="com.shapter.DiscoveryActivity" >
             <meta-data
@@ -74,12 +74,28 @@
                 android:value="com.shapter.DiscoveryActivity" />
         </activity>
         <activity
-            android:name="com.shapter.DescriptionEcoleActivity"
+            android:name="ecoles.DescriptionEcoleActivity"
             android:label="@string/title_activity_description_ecole"
             android:parentActivityName="com.shapter.DiscoveryActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.shapter.DiscoveryActivity" />
+        </activity>
+        <activity
+            android:name="login.OubliMdpActivity"
+            android:label="@string/title_activity_oubli_mdp"
+            android:parentActivityName="LoginActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="LoginActivity" />
+        </activity>
+        <activity
+            android:name="login.InscriptionActivity"
+            android:label="@string/title_activity_inscription"
+            android:parentActivityName="LoginActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="LoginActivity" />
         </activity>
     </application>
 

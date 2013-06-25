@@ -1,4 +1,4 @@
-package ueBDD;
+package ue;
 
 /*
  * Création d'un cours de la BDD des cours (qui devra être importée)

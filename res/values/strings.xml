@@ -4,25 +4,12 @@
     <string name="app_name">Shapter</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="menu_ue">UEs</string>
-    <string name="menu_ecole">Ecoles</string>
-    <string name="menu_eleves">Elèves</string>
-    <string name="menu_login">Login</string>
-    <string name="menu_plus">Plus</string>
     <string name="discover">Découvrir</string>
     <string name="bouton_ue">UEs</string>
     <string name="bouton_ecoles">Ecoles</string>
     <string name="recherche">Rechercher&#8230;</string>
     <string name="identification">S\'identifier</string>
-    <string name="title_activity_discovery">Découverte de Shapter</string>
-    <string name="title_activity_ue">Les UE disponibles</string>
-    <string name="title_activity_description_ue">Description de l\'UE</string>
-    <string name="title_activity_school">Les écoles référencées</string>
-    <string name="title_activity_loged">Vous êtes bien connectés !</string>
     <string name="username">Username utilisateur</string>
-    <string name="prompt_username">Nom d\'utilisateur</string>
     <string name="mdp">Mdp utilisateur</string>
-    <string name="prompt_mdp">Mot de passe</string>
-    <string name="title_activity_description_ecole">Description de l\'école</string>
 
 </resources>

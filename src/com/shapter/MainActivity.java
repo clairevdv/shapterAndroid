@@ -1,5 +1,8 @@
 package com.shapter;
 
+import ue.UEActivity;
+import login.LoginActivity;
+import ecoles.SchoolActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

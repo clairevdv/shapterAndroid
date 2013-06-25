@@ -1,5 +1,8 @@
 package com.shapter;
 
+import ue.UEActivity;
+import login.LoginActivity;
+import ecoles.SchoolActivity;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -23,7 +26,6 @@ public class LogedActivity extends Activity {
 		TextView bienvenue = (TextView) findViewById(R.id.loged);
 		Intent intent = getIntent();
 		if (intent != null) {
-			System.out.println("Pourtant il n'est pas nul !");
 			String username = intent.getStringExtra("username");
 			bienvenue.setText("Bienvenue " + username + " !");
 		}

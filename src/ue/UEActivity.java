@@ -1,7 +1,5 @@
-package com.shapter;
+package ue;
 
-import ueBDD.SchoolDAO;
-import ueBDD.UEDAO;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -23,6 +21,10 @@ import android.widget.EditText;
 import android.widget.FilterQueryProvider;
 import android.widget.ListView;
 import android.widget.Spinner;
+
+import com.shapter.R;
+
+import ecoles.SchoolDAO;
 
 @SuppressLint("NewApi")
 public class UEActivity extends Activity implements OnItemSelectedListener {

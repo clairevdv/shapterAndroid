@@ -1,4 +1,4 @@
-package com.shapter;
+package ecoles;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -8,6 +8,8 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
+
+import com.shapter.R;
 
 public class DescriptionEcoleActivity extends Activity {
 	private WebView mWebView = null;

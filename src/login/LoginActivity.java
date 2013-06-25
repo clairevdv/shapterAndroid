@@ -1,6 +1,5 @@
-package com.shapter;
+package login;
 
-import ueBDD.UserDAO;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -18,10 +17,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.shapter.LogedActivity;
+import com.shapter.R;
+
 /**
  * Activity de login
  */
 public class LoginActivity extends Activity {
+	@SuppressLint("NewApi")
 	private UserDAO uDAO;
 
 	// Le remplissage par défaut de l'username et la longueur minimale de mot de passe souhaitée
@@ -36,7 +39,6 @@ public class LoginActivity extends Activity {
 	private EditText mUserNameView;
 	private EditText mPasswordView;
 
-	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -69,6 +71,16 @@ public class LoginActivity extends Activity {
 						attemptLogin();
 					}
 				});
+	}
+
+	public void oubli(View view) {
+		Intent intentOubli = new Intent(this, OubliMdpActivity.class);
+		startActivity(intentOubli);
+	}
+	
+	public void inscription(View view) {
+		Intent intentInscription = new Intent(this, InscriptionActivity.class);
+		startActivity(intentInscription);
 	}
 
 	/**

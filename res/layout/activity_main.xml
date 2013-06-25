@@ -29,7 +29,6 @@
             style="@style/bouton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/bouton_selector"
             android:onClick="discover"
             android:text="@string/discover" />
 
@@ -38,7 +37,6 @@
             style="@style/bouton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/bouton_selector"
             android:onClick="login"
             android:text="@string/identification" />
     </LinearLayout>

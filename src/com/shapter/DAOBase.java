@@ -1,4 +1,5 @@
-package ueBDD;
+package com.shapter;
+
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

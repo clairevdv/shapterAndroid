@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_activity_discovery">Découverte de Shapter</string>
+    <string name="title_activity_ue">Les UE disponibles</string>
+    <string name="title_activity_description_ue">Description de l\'UE</string>
+    <string name="title_activity_school">Les écoles référencées</string>
+    <string name="title_activity_loged">Vous êtes bien connectés !</string>
+    <string name="title_activity_description_ecole">Description de l\'école</string>
+    <string name="title_activity_oubli_mdp">Récupération de mot de passe</string>
+    <string name="title_activity_inscription">Inscription</string>
+
+</resources>
