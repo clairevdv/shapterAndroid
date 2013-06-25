@@ -13,6 +13,7 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -50,17 +51,6 @@ public class UEActivity extends Activity implements OnItemSelectedListener {
 		cDAO.open();
 		cDAO.initialiserTest();
 		afficherCours();		
-	}
-
-	// On définit ce qui se passe au clic sur le spinner
-	public void onItemSelected(AdapterView<?> parent, View view, 
-			int pos, long id) {
-		Cursor cursor = (Cursor) parent.getItemAtPosition(pos);
-		school = cursor.getInt(cursor.getColumnIndexOrThrow("_id"));
-		afficherCours();
-	}
-	public void onNothingSelected(AdapterView<?> parent) {
-		// Another interface callback
 	}
 
 	private void afficherChoixTri() {
@@ -118,7 +108,7 @@ public class UEActivity extends Activity implements OnItemSelectedListener {
 		});
 
 		// On cree un systeme de recherche d'UE
-		EditText myFilter = (EditText) findViewById(R.id.myFilter);
+		EditText myFilterUE = (EditText) findViewById(R.id.myFilterUE);
 		TextWatcher textWatcher = new TextWatcher() {
 			public void afterTextChanged(Editable s) {
 			}
@@ -129,7 +119,7 @@ public class UEActivity extends Activity implements OnItemSelectedListener {
 				UEAdapter.getFilter().filter(s.toString());
 			}
 		};
-		myFilter.addTextChangedListener(textWatcher);
+		myFilterUE.addTextChangedListener(textWatcher);
 
 		FilterQueryProvider query = new FilterQueryProvider() {
 			public Cursor runQuery(CharSequence constraint) {
@@ -137,6 +127,21 @@ public class UEActivity extends Activity implements OnItemSelectedListener {
 			}
 		};
 		UEAdapter.setFilterQueryProvider(query);
+	}
+
+	// On définit ce qui se passe au clic sur le spinner
+	public void onItemSelected(AdapterView<?> parent, View view, 
+			int pos, long id) {
+			Cursor cursor = (Cursor) parent.getItemAtPosition(pos);
+			school = cursor.getInt(cursor.getColumnIndexOrThrow("_id"));
+			afficherCours();
+	}
+	public void onNothingSelected(AdapterView<?> parent) {}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.action_bar, menu);
+		return true;
 	}
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)

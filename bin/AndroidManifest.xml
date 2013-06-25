@@ -65,6 +65,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.shapter.MainActivity" />
         </activity>
+        <activity
+            android:name="com.shapter.SchoolActivity"
+            android:label="@string/title_activity_school"
+            android:parentActivityName="com.shapter.DiscoveryActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.shapter.DiscoveryActivity" />
+        </activity>
+        <activity
+            android:name="com.shapter.DescriptionEcoleActivity"
+            android:label="@string/title_activity_description_ecole"
+            android:parentActivityName="com.shapter.DiscoveryActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.shapter.DiscoveryActivity" />
+        </activity>
     </application>
 
 </manifest>

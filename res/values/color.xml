@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="bouton">#66CCCC</color>
+    <color name="bouton_selected">#57ADAD</color>
+    <color name="bouton_pressed">#57ADAD</color>
+    <color name="texte_bouton">#FFFFFF</color>
+
+</resources>

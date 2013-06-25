@@ -10,6 +10,12 @@ package com.shapter;
 public final class R {
     public static final class attr {
     }
+    public static final class color {
+        public static final int bouton=0x7f040000;
+        public static final int bouton_pressed=0x7f040002;
+        public static final int bouton_selected=0x7f040001;
+        public static final int texte_bouton=0x7f040003;
+    }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
@@ -17,101 +23,117 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f040000;
-        public static final int activity_vertical_margin=0x7f040001;
+        public static final int activity_horizontal_margin=0x7f050000;
+        public static final int activity_vertical_margin=0x7f050001;
+        public static final int bouton_margin=0x7f050003;
+        public static final int bouton_padding=0x7f050002;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int ic_menu_ecole=0x7f020001;
-        public static final int ic_menu_eleves=0x7f020002;
-        public static final int ic_menu_login=0x7f020003;
-        public static final int ic_menu_overflow=0x7f020004;
-        public static final int ic_menu_ue=0x7f020005;
-        public static final int pouf=0x7f020006;
+        public static final int bouton_selector=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
+        public static final int ic_menu_ecole=0x7f020002;
+        public static final int ic_menu_eleves=0x7f020003;
+        public static final int ic_menu_login=0x7f020004;
+        public static final int ic_menu_overflow=0x7f020005;
+        public static final int ic_menu_ue=0x7f020006;
+        public static final int pouf=0x7f020007;
     }
     public static final class id {
-        public static final int action_forgot_password=0x7f080019;
-        public static final int action_settings=0x7f080018;
-        public static final int choixEcole=0x7f08000d;
-        public static final int code=0x7f080011;
-        public static final int container=0x7f080010;
-        public static final int descriptionUE=0x7f080000;
-        public static final int discover=0x7f08000a;
-        public static final int email=0x7f080006;
-        public static final int email_display=0x7f080001;
-        public static final int identification=0x7f08000b;
-        public static final int listViewCours=0x7f08000f;
-        public static final int login=0x7f080008;
-        public static final int login_form=0x7f080005;
-        public static final int login_status=0x7f080003;
-        public static final int login_status_message=0x7f080004;
-        public static final int menu_ecole=0x7f080014;
-        public static final int menu_eleves=0x7f080015;
-        public static final int menu_login=0x7f080016;
-        public static final int menu_plus=0x7f080017;
-        public static final int menu_ue=0x7f080013;
-        public static final int myFilter=0x7f08000e;
-        public static final int password=0x7f080007;
-        public static final int password_display=0x7f080002;
-        public static final int sign_in_button=0x7f080009;
-        public static final int titreUE=0x7f080012;
-        public static final int titre_activity_discovery=0x7f08000c;
+        public static final int action_forgot_password=0x7f09001e;
+        public static final int action_settings=0x7f09001d;
+        public static final int bouton_ecoles=0x7f090003;
+        public static final int bouton_ue=0x7f090004;
+        public static final int choixEcole=0x7f090011;
+        public static final int choixPays=0x7f09000d;
+        public static final int code=0x7f090016;
+        public static final int descriptionUE=0x7f090001;
+        public static final int discover=0x7f09000a;
+        public static final int identification=0x7f09000b;
+        public static final int listViewCours=0x7f090013;
+        public static final int listViewEcoles=0x7f09000f;
+        public static final int loged=0x7f090002;
+        public static final int login=0x7f090008;
+        public static final int login_form=0x7f090005;
+        public static final int menu_ecole=0x7f090019;
+        public static final int menu_eleves=0x7f09001a;
+        public static final int menu_login=0x7f09001b;
+        public static final int menu_plus=0x7f09001c;
+        public static final int menu_ue=0x7f090018;
+        public static final int myFilterEcole=0x7f09000e;
+        public static final int myFilterUE=0x7f090012;
+        public static final int nomEcole=0x7f090015;
+        public static final int password=0x7f090007;
+        public static final int pays=0x7f090014;
+        public static final int sign_in_button=0x7f090009;
+        public static final int titreUE=0x7f090017;
+        public static final int titre_activity_school=0x7f09000c;
+        public static final int titre_activity_ue=0x7f090010;
+        public static final int username=0x7f090006;
+        public static final int webview_description_ecole=0x7f090000;
     }
     public static final class layout {
-        public static final int activity_description_ue=0x7f030000;
-        public static final int activity_discovery=0x7f030001;
-        public static final int activity_loged=0x7f030002;
-        public static final int activity_login=0x7f030003;
-        public static final int activity_main=0x7f030004;
-        public static final int activity_ue=0x7f030005;
-        public static final int liste_ue=0x7f030006;
+        public static final int activity_description_ecole=0x7f030000;
+        public static final int activity_description_ue=0x7f030001;
+        public static final int activity_discovery=0x7f030002;
+        public static final int activity_loged=0x7f030003;
+        public static final int activity_login=0x7f030004;
+        public static final int activity_main=0x7f030005;
+        public static final int activity_school=0x7f030006;
+        public static final int activity_ue=0x7f030007;
+        public static final int liste_ecoles=0x7f030008;
+        public static final int liste_ue=0x7f030009;
     }
     public static final class menu {
-        public static final int action_bar=0x7f070000;
-        public static final int all_products=0x7f070001;
-        public static final int connexion=0x7f070002;
-        public static final int description_ue=0x7f070003;
-        public static final int discovery=0x7f070004;
-        public static final int edit_product=0x7f070005;
-        public static final int loged=0x7f070006;
-        public static final int login=0x7f070007;
-        public static final int main=0x7f070008;
-        public static final int new_product=0x7f070009;
-        public static final int test=0x7f07000a;
+        public static final int action_bar=0x7f080000;
+        public static final int all_products=0x7f080001;
+        public static final int connexion=0x7f080002;
+        public static final int description_ecole=0x7f080003;
+        public static final int discovery=0x7f080004;
+        public static final int edit_product=0x7f080005;
+        public static final int loged=0x7f080006;
+        public static final int login=0x7f080007;
+        public static final int main=0x7f080008;
+        public static final int new_product=0x7f080009;
+        public static final int school=0x7f08000a;
+        public static final int test=0x7f08000b;
     }
     public static final class string {
-        public static final int action_forgot_password=0x7f050018;
-        public static final int action_settings=0x7f050001;
-        public static final int action_sign_in_register=0x7f050016;
-        public static final int action_sign_in_short=0x7f050017;
-        public static final int app_name=0x7f050000;
-        public static final int discover=0x7f050009;
-        public static final int error_field_required=0x7f05001d;
-        public static final int error_incorrect_password=0x7f05001c;
-        public static final int error_invalid_email=0x7f05001a;
-        public static final int error_invalid_password=0x7f05001b;
-        public static final int hello_world=0x7f050002;
-        public static final int identification=0x7f05000b;
-        public static final int login_progress_signing_in=0x7f050019;
-        public static final int mail=0x7f05000f;
-        public static final int mail_cible=0x7f050010;
-        public static final int mdp=0x7f050011;
-        public static final int mdp_cible=0x7f050012;
-        public static final int menu_ecole=0x7f050004;
-        public static final int menu_eleves=0x7f050005;
-        public static final int menu_login=0x7f050006;
-        public static final int menu_plus=0x7f050007;
-        public static final int menu_ue=0x7f050003;
+        public static final int action_forgot_password=0x7f06001c;
+        public static final int action_settings=0x7f060001;
+        public static final int action_sign_in_register=0x7f06001a;
+        public static final int action_sign_in_short=0x7f06001b;
+        public static final int app_name=0x7f060000;
+        public static final int bouton_ecoles=0x7f06000a;
+        public static final int bouton_ue=0x7f060009;
+        public static final int discover=0x7f060008;
+        public static final int error_field_required=0x7f060021;
+        public static final int error_incorrect_password=0x7f060020;
+        public static final int error_invalid_email=0x7f06001e;
+        public static final int error_invalid_password=0x7f06001f;
+        public static final int hello_world=0x7f060002;
+        public static final int identification=0x7f06000c;
+        public static final int login_progress_signing_in=0x7f06001d;
+        public static final int mdp=0x7f060014;
+        public static final int menu_ecole=0x7f060004;
+        public static final int menu_eleves=0x7f060005;
+        public static final int menu_login=0x7f060006;
+        public static final int menu_plus=0x7f060007;
+        public static final int menu_ue=0x7f060003;
         /**  Strings related to login 
          */
-        public static final int prompt_email=0x7f050014;
-        public static final int prompt_password=0x7f050015;
-        public static final int recherche=0x7f05000a;
-        public static final int title_activity_description_ue=0x7f05000d;
-        public static final int title_activity_discovery=0x7f05000c;
-        public static final int title_activity_loged=0x7f05000e;
-        public static final int title_activity_login=0x7f050013;
-        public static final int ue=0x7f050008;
+        public static final int prompt_email=0x7f060018;
+        public static final int prompt_mdp=0x7f060015;
+        public static final int prompt_password=0x7f060019;
+        public static final int prompt_username=0x7f060013;
+        public static final int recherche=0x7f06000b;
+        public static final int title_activity_description_ecole=0x7f060016;
+        public static final int title_activity_description_ue=0x7f06000f;
+        public static final int title_activity_discovery=0x7f06000d;
+        public static final int title_activity_loged=0x7f060011;
+        public static final int title_activity_login=0x7f060017;
+        public static final int title_activity_school=0x7f060010;
+        public static final int title_activity_ue=0x7f06000e;
+        public static final int username=0x7f060012;
     }
     public static final class style {
         /** 
@@ -137,11 +159,12 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f070000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
-        public static final int LoginFormContainer=0x7f060002;
+        public static final int AppTheme=0x7f070001;
+        public static final int LoginFormContainer=0x7f070002;
+        public static final int bouton=0x7f070003;
     }
 }

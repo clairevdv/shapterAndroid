@@ -17,7 +17,9 @@ public class SchoolDAO extends DAOBase{
 	private static final String NOM_ECOLE = "name";
 	private static final String PAYS_ECOLE = "country";
 	private static final String DESCRIPTION_ECOLE = "description";
-
+	private static final String EMPTY_SPINNER_STRING_ECOLES = " Toutes les écoles";
+	private static final String EMPTY_SPINNER_STRING_PAYS = " Tous les pays";
+	
 	public void insertEcole(School ecole){
 		// On verifie que la ligne n'y est pas deja
 		Cursor c = mDb.rawQuery("select * from " + TABLE_NAME + " where " + NOM_ECOLE + " like ?" + " and " + PAYS_ECOLE + " like ?", new String[] {ecole.getName(), ecole.getCountry()});
@@ -63,44 +65,51 @@ public class SchoolDAO extends DAOBase{
 	}
 	
 	public Cursor listeEcoles() {
-		String EMPTY_SPINNER_STRING = " Lieu...";
 		Cursor c;
-		c = mDb.rawQuery("select distinct rowid _id,* from " + TABLE_NAME + " UNION select '' as 'rowid', '-1' as '_id', '" + EMPTY_SPINNER_STRING + "' AS 'name', 'None' AS 'country', '' AS 'description'" + " order by " + NOM_ECOLE, null);
+		c = mDb.rawQuery("select distinct rowid _id,* from " + TABLE_NAME + " UNION select '' as 'rowid', '-1' as '_id', '" + EMPTY_SPINNER_STRING_ECOLES + "' AS 'name', 'None' AS 'country', '' AS 'description'" + " order by " + NOM_ECOLE, null);
+		if(c.getCount() == 0) {
+			return null;
+		}
+		return c;  
+	}
+	
+	public Cursor listePays() {
+		Cursor c;
+		c = mDb.rawQuery("select distinct rowid _id,* from " + TABLE_NAME + " UNION select '' as 'rowid', '' as '_id', '' AS 'name', '" + EMPTY_SPINNER_STRING_PAYS + "' AS 'country', '' AS 'description'" + " order by " + PAYS_ECOLE, null);
 		if(c.getCount() == 0) {
 			return null;
 		}
 		return c;  
 	}
 
-	public Cursor recupererTable(int pays) {
+	public Cursor tableAffichageEcole(String pays) {
 		System.out.println("Affichons la database");
 		Cursor c;
-		if (pays == -1)
+		if ((pays == null)||(pays.trim().equals(""))||(pays.trim().equals(EMPTY_SPINNER_STRING_PAYS.trim())))
 			c = mDb.rawQuery("select rowid _id,* from " + TABLE_NAME + " order by " + PAYS_ECOLE, null);
 		else
 			c = mDb.rawQuery("select rowid _id,* from " + TABLE_NAME + " where " + PAYS_ECOLE + " like ? "+ " order by " + NOM_ECOLE, new String[] {String.valueOf(pays)});
-		
 		if(c.getCount() == 0) {
-			System.out.println("Table Vide pour le pays sélectionnée");
+			System.out.println("Table Vide pour le pays sélectionné");
 			return null;
 		}
 		return c;  
 	}
 
 	// En cas de recherche, on filtre les ecoles affichees
-	public Cursor ueByNom(int pays, String nomEcole) throws SQLException {
+	public Cursor ecoleByNom(String pays, String nomEcole) throws SQLException {
 		Log.w("SchoolDAO", nomEcole);
 		Cursor mCursor = null;
 		// Si la recherche est nulle, on affiche toutes les UE sinon on active le filtrage
 		if (nomEcole == null  ||  nomEcole.length () == 0)  {
-			if (pays == -1)
+			if ((pays == null)||(pays.trim().equals(""))||(pays == EMPTY_SPINNER_STRING_PAYS))
 				mCursor = mDb.rawQuery("select rowid _id,* from " + TABLE_NAME + " order by " + PAYS_ECOLE, null);
 			else
-				mCursor = mDb.rawQuery("select rowid _id,* from " + TABLE_NAME+ " where " + PAYS_ECOLE + " like ?" + " order by " + NOM_ECOLE, new String[] {String.valueOf(pays)});
+				mCursor = mDb.rawQuery("select rowid _id,* from " + TABLE_NAME + " where " + PAYS_ECOLE + " like ?" + " order by " + NOM_ECOLE, new String[] {String.valueOf(pays)});
 		}
 
 		else {
-			if (pays == -1)
+			if ((pays == null)||(pays.trim().equals(""))|| (pays == EMPTY_SPINNER_STRING_PAYS))
 				mCursor = mDb.rawQuery("select rowid _id,* from " + TABLE_NAME + " where " + NOM_ECOLE + " like '%" + nomEcole + "%'" + " order by " + PAYS_ECOLE, null);
 			else
 				mCursor = mDb.rawQuery("select rowid _id,* from " + TABLE_NAME + " where " + NOM_ECOLE + " like '%" + nomEcole + "%'" + " and " + PAYS_ECOLE + " like ? " + " order by " + NOM_ECOLE, new String[] {String.valueOf(pays)});

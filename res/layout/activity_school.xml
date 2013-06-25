@@ -3,13 +3,13 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    tools:context=".UEActivity" >
+    tools:context=".SchoolActivity" >
 
     <TextView
-        android:id="@+id/titre_activity_ue"
+        android:id="@+id/titre_activity_school"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/title_activity_ue" />
+        android:text="@string/title_activity_school" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -17,13 +17,13 @@
         android:orientation="horizontal" >
 
         <Spinner
-            android:id="@+id/choixEcole"
+            android:id="@+id/choixPays"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight=".70" />
 
         <EditText
-            android:id="@+id/myFilterUE"
+            android:id="@+id/myFilterEcole"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -35,7 +35,7 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/listViewCours"
+        android:id="@+id/listViewEcoles"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
 

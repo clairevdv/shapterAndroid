@@ -16,7 +16,7 @@ public class MainActivity extends Activity {
 	
 	public void discover(View view) {
 	    // Do something in response to button
-		Intent intentDiscovery = new Intent(this, UEActivity.class);
+		Intent intentDiscovery = new Intent(this, DiscoveryActivity.class);
 		startActivity(intentDiscovery);
 	}
 	
@@ -29,7 +29,6 @@ public class MainActivity extends Activity {
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.action_bar, menu);
-        System.out.println("I'm here !");
         return true;
     }
 	
@@ -41,7 +40,8 @@ public class MainActivity extends Activity {
 			startActivity(intentUE);
 			return true;
 		case R.id.menu_ecole:
-			// Comportement du bouton "Aide"
+			Intent intentEcole = new Intent(this, SchoolActivity.class);
+			startActivity(intentEcole);
 			return true;
 		case R.id.menu_eleves:
 			// Comportement du bouton "Rafraichir"

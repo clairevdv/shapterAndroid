@@ -2,22 +2,26 @@ package com.shapter;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.webkit.WebView;
 
-public class DescriptionUEActivity extends Activity {	
+public class DescriptionEcoleActivity extends Activity {
+	private WebView mWebView = null;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_description_ue);
+		setContentView(R.layout.activity_description_ecole);
 		// Show the Up button in the action bar
 		setupActionBar();
-		
+
+		mWebView = (WebView) findViewById(R.id.webview_description_ecole);
+		mWebView.loadUrl("http://www.siteduzero.com");
+		/*
 		TextView description = (TextView) findViewById(R.id.descriptionUE);
 		Intent intent = getIntent();
 		if (intent != null) {
@@ -25,7 +29,7 @@ public class DescriptionUEActivity extends Activity {
 			description.setText(descriptionUE);
 		}
 		else
-			System.out.println("Les données ne sont pas passées entre les deux activités au clic sur l'UE");
+			System.out.println("Les données ne sont pas passées entre les deux activités au clic sur l'UE"); */
 	}
 
 	/**
