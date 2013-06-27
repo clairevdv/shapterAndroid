@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="menu_ue">UEs</string>
+    <string name="menu_ecole">Ecoles</string>
+    <string name="menu_eleves">Elèves</string>
+    <string name="menu_login">Login</string>
+    <string name="menu_plus">Plus</string>
+
+</resources>

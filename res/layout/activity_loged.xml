@@ -38,6 +38,15 @@
             android:drawableTop="@drawable/ic_menu_ue"
             android:onClick="ue"
             android:text="@string/bouton_ue" />
+
+        <Button
+            android:id="@+id/bouton_profil"
+            style="@style/bouton"
+            android:layout_weight="1"
+            android:background="@drawable/bouton_selector"
+            android:drawableTop="@drawable/ic_menu_login"
+            android:onClick="profil"
+            android:text="@string/bouton_profil" />
     </LinearLayout>
 
 </RelativeLayout>

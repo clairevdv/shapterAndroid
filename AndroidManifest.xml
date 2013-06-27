@@ -97,6 +97,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="LoginActivity" />
         </activity>
+        <activity
+            android:name="login.PreferencesActivity"
+            android:label="@string/title_activity_profil" >
+        </activity>
+        <activity
+            android:name="login.ProfilActivity"
+            android:label="@string/title_activity_profil" >
+        </activity>
+        <activity
+            android:name="login.PhotoActivity"
+            android:label="@string/title_activity_photo"
+            android:parentActivityName="login.ProfilActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="login.ProfilActivity" />
+        </activity>
     </application>
 
 </manifest>

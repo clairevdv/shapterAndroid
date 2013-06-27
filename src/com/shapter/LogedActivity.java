@@ -1,18 +1,18 @@
 package com.shapter;
 
+import login.ProfilActivity;
 import ue.UEActivity;
-import login.LoginActivity;
-import ecoles.SchoolActivity;
-import android.os.Bundle;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.support.v4.app.NavUtils;
-import android.annotation.TargetApi;
-import android.content.Intent;
-import android.os.Build;
+import ecoles.SchoolActivity;
 
 public class LogedActivity extends Activity {
 
@@ -31,7 +31,6 @@ public class LogedActivity extends Activity {
 		}
 		else
 			System.out.println("Les données ne sont pas passées entre les deux activités au moment du login");
-		System.out.println("Wtf ?!");
 	}
 	
 	public void ue(View view) {
@@ -44,6 +43,12 @@ public class LogedActivity extends Activity {
 		// Do something in response to button
 		Intent intentEcoles = new Intent(this, SchoolActivity.class);
 		startActivity(intentEcoles);
+	}
+	
+	public void profil(View view) {
+		// Do something in response to button
+		Intent intentProfil = new Intent(this, ProfilActivity.class);
+		startActivity(intentProfil);
 	}
 
 	/**
@@ -81,11 +86,8 @@ public class LogedActivity extends Activity {
 			// Comportement du bouton "Rafraichir"
 			return true;
 		case R.id.menu_login:
-			Intent intentLogin = new Intent(this, LoginActivity.class);
-			startActivity(intentLogin);
-			return true;
-		case R.id.menu_plus:
-			// Comportement du bouton "Paramètres"
+			Intent intentProfil = new Intent(this, ProfilActivity.class);
+			startActivity(intentProfil);
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);

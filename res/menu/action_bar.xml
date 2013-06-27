@@ -21,10 +21,5 @@
         android:icon="@drawable/ic_menu_login"
         android:showAsAction="always"
         android:title="@string/menu_login"/>
-    <item
-        android:id="@+id/menu_plus"
-        android:icon="@drawable/ic_menu_overflow"
-        android:showAsAction="never"
-        android:title="@string/menu_plus"/>
 
 </menu>

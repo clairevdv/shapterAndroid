@@ -27,14 +27,16 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 	private static final String COLUMN2_USER = "first_name";
 	private static final String COLUMN3_USER = "last_name";
 	private static final String COLUMN4_USER = "email";	
-	private static final String COLUMN5_USER = "password";	
-	private static final String COLUMN6_USER = "is_staff";	
-	private static final String COLUMN7_USER = "is_active";	
-	private static final String COLUMN8_USER = "is_superuser";	
+	private static final String COLUMN5_USER = "photo";
+	private static final String COLUMN6_USER = "password";
+	private static final String COLUMN7_USER = "id_student";
+	private static final String COLUMN8_USER = "is_staff";	
+	private static final String COLUMN9_USER = "is_active";	
+	private static final String COLUMN10_USER = "is_superuser";	
 
 	public static final String CREATE_TABLE_COURS = "CREATE TABLE " + TABLE_NAME_UE + " (" + KEY_UE + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN1_UE + " INTEGER, " + COLUMN2_UE + " TEXT NOT NULL, " + COLUMN3_UE + " TEXT NOT NULL, " + COLUMN4_UE + " TEXT);" ;
 	public static final String CREATE_TABLE_ECOLE = "CREATE TABLE " + TABLE_NAME_ECOLE + " (" + KEY_ECOLE + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN1_ECOLE + " TEXT NOT NULL, " + COLUMN2_ECOLE + " TEXT NOT NULL, " + COLUMN3_ECOLE + " TEXT);" ;
-	public static final String CREATE_TABLE_USER = "CREATE TABLE " + TABLE_NAME_USER + " (" + KEY_USER + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN1_USER + " TEXT NOT NULL, " + COLUMN2_USER + " TEXT NOT NULL, " + COLUMN3_USER + " TEXT NOT NULL, " + COLUMN4_USER + " TEXT NOT NULL, " + COLUMN5_USER + " TEXT NOT NULL, " + COLUMN6_USER + " INTEGER, " + COLUMN7_USER + " INTEGER, " + COLUMN8_USER + " INTEGER);";
+	public static final String CREATE_TABLE_USER = "CREATE TABLE " + TABLE_NAME_USER + " (" + KEY_USER + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN1_USER + " TEXT NOT NULL, " + COLUMN2_USER + " TEXT NOT NULL, " + COLUMN3_USER + " TEXT NOT NULL, " + COLUMN4_USER + " TEXT NOT NULL, " + COLUMN5_USER + " BLOB, " + COLUMN6_USER + " TEXT NOT NULL, " + COLUMN7_USER + " INTEGER, " + COLUMN8_USER + " INTEGER, " + COLUMN9_USER + " INTEGER, " + COLUMN10_USER + " INTEGER);";
 
 	public DatabaseHandler(Context context, String name, CursorFactory factory, int version) {
 		super(context, name, factory, version);
