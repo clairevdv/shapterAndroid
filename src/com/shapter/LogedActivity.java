@@ -22,17 +22,12 @@ public class LogedActivity extends Activity {
 		setContentView(R.layout.activity_loged);
 		// Show the Up button in the action bar.
 		setupActionBar();
-		
+
 		TextView bienvenue = (TextView) findViewById(R.id.loged);
-		Intent intent = getIntent();
-		if (intent != null) {
-			String username = intent.getStringExtra("username");
-			bienvenue.setText("Bienvenue " + username + " !");
-		}
-		else
-			System.out.println("Les données ne sont pas passées entre les deux activités au moment du login");
+		if (ShapterApp.username != null)
+			bienvenue.setText("Bienvenue " + ShapterApp.username + " !");
 	}
-	
+
 	public void ue(View view) {
 		// Do something in response to button
 		Intent intentUE = new Intent(this, UEActivity.class);
@@ -44,7 +39,7 @@ public class LogedActivity extends Activity {
 		Intent intentEcoles = new Intent(this, SchoolActivity.class);
 		startActivity(intentEcoles);
 	}
-	
+
 	public void profil(View view) {
 		// Do something in response to button
 		Intent intentProfil = new Intent(this, ProfilActivity.class);

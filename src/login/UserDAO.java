@@ -83,10 +83,10 @@ public class UserDAO extends DAOBase {
 		mDb.update(TABLE_NAME, values, KEY + " = ?", new String[] {String.valueOf(user.getId())});
 	}
 	
-	public void addPhoto(Bitmap photo, String username){		
+	public void ajouterPhoto(Bitmap photo, String username){		
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		photo.compress(Bitmap.CompressFormat.PNG, 100, out);
-		byte[] buffer=out.toByteArray();
+		byte[] buffer = out.toByteArray();
 		ContentValues values = new ContentValues();
 		values.put(PHOTO, buffer);
 		mDb.update(TABLE_NAME, values, UTILISATEUR + " = ?", new String[] {username});

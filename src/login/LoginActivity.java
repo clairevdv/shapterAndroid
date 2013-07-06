@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.shapter.LogedActivity;
 import com.shapter.R;
+import com.shapter.ShapterApp;
 
 /**
  * Activity de login
@@ -128,8 +129,8 @@ public class LoginActivity extends Activity {
 			int result = uDAO.login(mUserName,mPassword);
 			uDAO.close();
 			if (result == 0) {
+				ShapterApp.username = mUserName;
 				Intent intentLoged = new Intent(this, LogedActivity.class);
-				intentLoged.putExtra("username", mUserName);
 				startActivity(intentLoged);
 			}
 			if (result == 1) {

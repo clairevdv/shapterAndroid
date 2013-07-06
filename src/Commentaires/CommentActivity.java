@@ -1,38 +1,65 @@
-package ecoles;
+package Commentaires;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.widget.ListView;
 
 import com.shapter.R;
 
-public class DescriptionEcoleActivity extends Activity {
-	//private WebView mWebView = null;
+public class CommentActivity extends Activity {
+
+	private CommentDAO cDAO;
+	private SimpleCursorAdapter CommentAdapter;
+	private int course_id;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_description_ecole);
-		// Show the Up button in the action bar
+		setContentView(R.layout.activity_comment);
+		// Show the Up button in the action bar.
 		setupActionBar();
 
-		/*mWebView = (WebView) findViewById(R.id.webview_description_ecole);
-		mWebView.loadUrl("http://www.siteduzero.com");
-		*/
-		TextView description = (TextView) findViewById(R.id.descriptionUE);
+		cDAO = new CommentDAO(this);
+		cDAO.open();
+		cDAO.initialiserTest();
+		
 		Intent intent = getIntent();
 		if (intent != null) {
-			String descriptionUE = intent.getStringExtra("descriptionUE");
-			description.setText(descriptionUE);
+			String id = intent.getStringExtra("course_id");
+			course_id = Integer.valueOf(id);
 		}
 		else
 			System.out.println("Les données ne sont pas passées entre les deux activités au clic sur l'UE"); 
+		afficherCommentaires(course_id);	
+	}
+
+	private void afficherCommentaires(int course_id) {
+		// On cree un adapteur de la bdd a une listView
+		Cursor listeCommentAffichage = cDAO.tableAffichageComment(course_id);
+		String[] colonnes = new String[] {"student_id", "comment"};
+		int[] textViewAModifier = new int[] {
+				R.id.pays,
+				R.id.nomEcole,
+		};
+		CommentAdapter = new SimpleCursorAdapter(
+				this, R.layout.liste_ecoles,
+				listeCommentAffichage,
+				colonnes,
+				textViewAModifier,
+				0);
+		CommentAdapter.notifyDataSetChanged ();
+
+		// On assigne l'adapteur a la ListView
+		ListView listView = (ListView) findViewById(R.id.listViewComment);
+		listView.setAdapter(CommentAdapter);
 	}
 
 	/**
@@ -48,7 +75,7 @@ public class DescriptionEcoleActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.action_bar, menu);
+		getMenuInflater().inflate(R.menu.comment, menu);
 		return true;
 	}
 

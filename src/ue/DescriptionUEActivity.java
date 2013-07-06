@@ -1,5 +1,6 @@
 package ue;
 
+import Commentaires.CommentActivity;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +12,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.shapter.R;
+
+import ecoles.DescriptionEcoleActivity;
 
 public class DescriptionUEActivity extends Activity {	
 	@Override
@@ -28,6 +31,12 @@ public class DescriptionUEActivity extends Activity {
 		}
 		else
 			System.out.println("Les données ne sont pas passées entre les deux activités au clic sur l'UE");
+	}
+	
+	public void comment() {
+		Intent commentEcole = new Intent(DescriptionUEActivity.this, CommentActivity.class);
+		commentEcole.putExtra("course_id", descriptif);
+		startActivity(commentEcole);
 	}
 
 	/**

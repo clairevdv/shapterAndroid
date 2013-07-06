@@ -2,12 +2,10 @@ package login;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
@@ -17,10 +15,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.shapter.R;
+import com.shapter.ShapterApp;
 
 public class ProfilActivity extends Activity {
 	private UserDAO uDAO;
-	String _username;
+	String _username = ShapterApp.username;
 	private TextView username;
 	private TextView prenom;
 	private TextView nom;
@@ -73,20 +72,20 @@ public class ProfilActivity extends Activity {
 				// On recupere l'image croppee pour la mettre en photo de profil
 				Bundle extras = imageReturnedIntent.getExtras();
 				photo = extras.getParcelable("data");
-				photoProfil.setImageBitmap(photo);
+				//photoProfil.setImageBitmap(photo);
 
-				// Et on l'enregistrer dans la base de donnees
+				// On l'enregistre dans la base de donnees et on l'affiche
 				uDAO = new UserDAO(this);
 				uDAO.open();
-				uDAO.addPhoto(photo, _username);
+				uDAO.ajouterPhoto(photo, _username);
 				uDAO.close();
+				
+				afficherProfil();
 			}
 		}
 	}
 
 	private void afficherProfil() {
-		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ProfilActivity.this);
-		_username = prefs.getString("username", "Default NickName");
 		username.setText("Bienvenue " + _username + " !");
 
 		uDAO = new UserDAO(this);
@@ -105,11 +104,14 @@ public class ProfilActivity extends Activity {
 		nom.setText(infoUser.getString(3));
 		email.setText(infoUser.getString(4));
 		byte[] image = infoUser.getBlob(5);
-		if (image == null)
-			photoProfil.setImageResource(R.drawable.ic_menu_eleves); 
+		if (image == null) {
+			photoProfil.setImageResource(R.drawable.ic_menu_eleves);
+			System.out.println("Oups, it's empty...");
+		}
 		else {
 			photo = BitmapFactory.decodeByteArray(image, 0, image.length);
 			photoProfil.setImageBitmap(photo);
+			System.out.println("I'm here !");
 		}
 
 	}
@@ -120,5 +122,4 @@ public class ProfilActivity extends Activity {
 		getMenuInflater().inflate(R.menu.action_bar, menu);
 		return true;
 	}
-
 }
