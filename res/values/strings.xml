@@ -7,6 +7,7 @@
     <string name="discover">Découvrir</string>
     <string name="bouton_ue">UEs</string>
     <string name="bouton_ecoles">Ecoles</string>
+    <string name="bouton_comments">Commentaires</string>
     <string name="bouton_profil">Profil</string>
     <string name="recherche">Rechercher&#8230;</string>
     <string name="identification">S\'identifier</string>
@@ -19,5 +20,6 @@
     <string name="prefs">Modifier le profil</string>
     <string name="title_activity_photo">Choisir sa photo</string>
     <string name="photoDesc">Photo de profil utilisateur</string>
+    <string name="title_activity_comment">Commentaires sur l\'UE</string>
 
 </resources>

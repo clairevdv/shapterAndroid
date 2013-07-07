@@ -47,7 +47,6 @@ public class UEDAO extends DAOBase{
 		UE c4 = new UE(1, "PJL380", "Projet libre");
 		UE c5 = new UE(2, "IHM315", "Interfaces homme-machine", "Cette unité d'enseignement présente les méthodes et techniques permettant la conception et la réalisation d'interfaces homme-machine conviviales et performantes. L'enseignement comprend trois parties respectivement consacrées: aux facteurs humains, aux aspects logiciels et au contrôle interactif du contenu visuel");
 
-		System.out.println("les UE sont créées");
 		insertCours(c1);
 		insertCours(c2);
 		insertCours(c3);
@@ -96,15 +95,25 @@ public class UEDAO extends DAOBase{
 			if (ecole == -1)
 				mCursor = mDb.rawQuery("select rowid _id,* from " + TABLE_NAME + " order by " + TITRE_UE, null);
 			else
-				mCursor = mDb.rawQuery("select rowid _id,* from " + TABLE_NAME+ " where " + ECOLE + " like ?" + " order by " + CODE, new String[] {String.valueOf(ecole)});
+				mCursor = mDb.rawQuery("select rowid _id,* from " + TABLE_NAME + " where " + ECOLE + " like ?" + " order by " + CODE, new String[] {String.valueOf(ecole)});
 		}
 
 		else {
 			if (ecole == -1)
-				mCursor = mDb.rawQuery("select rowid _id,* from " + TABLE_NAME + " where " + TITRE_UE + " like '%" + nomUE + "%'" + " order by " + TITRE_UE, null);
+				mCursor = mDb.rawQuery("select rowid _id,* from " + TABLE_NAME + " where " + TITRE_UE + " like '%" + nomUE + "%'" + " or " + CODE + " like '%" + nomUE + "%'" + " order by " + TITRE_UE, null);
 			else
-				mCursor = mDb.rawQuery("select rowid _id,* from " + TABLE_NAME + " where " + TITRE_UE + " like '%" + nomUE + "%'" + " and " + ECOLE + " like ? " + " order by " + CODE, new String[] {String.valueOf(ecole)});
+				mCursor = mDb.rawQuery("select rowid _id,* from " + TABLE_NAME + " where " + TITRE_UE + " like '%" + nomUE + "%'" + " or " + CODE + " like '%" + nomUE + "%'" + " and " + ECOLE + " like ? " + " order by " + CODE, new String[] {String.valueOf(ecole)});
 		}
+		if (mCursor != null) {
+			mCursor.moveToFirst();
+		}
+		return mCursor;
+	}
+
+	public Cursor ueById(String course_id) throws SQLException {
+		Cursor mCursor = null;
+		mCursor = mDb.rawQuery("select rowid _id,* from " + TABLE_NAME + " where " + KEY + " like ?", new String[] {course_id});
+
 		if (mCursor != null) {
 			mCursor.moveToFirst();
 		}

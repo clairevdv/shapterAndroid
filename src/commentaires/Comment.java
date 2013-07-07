@@ -1,4 +1,4 @@
-package Commentaires;
+package commentaires;
 
 public class Comment {
 	private int id;

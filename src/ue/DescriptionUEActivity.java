@@ -1,21 +1,24 @@
 package ue;
 
-import Commentaires.CommentActivity;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.shapter.R;
-
-import ecoles.DescriptionEcoleActivity;
+import commentaires.CommentActivity;
 
 public class DescriptionUEActivity extends Activity {	
+	private UEDAO uDAO;
+	private String course_id;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -26,16 +29,23 @@ public class DescriptionUEActivity extends Activity {
 		TextView description = (TextView) findViewById(R.id.descriptionUE);
 		Intent intent = getIntent();
 		if (intent != null) {
-			String descriptionUE = intent.getStringExtra("descriptionUE");
+			course_id = intent.getStringExtra("course_id");
+			uDAO = new UEDAO(this);
+			uDAO.open();
+			uDAO.initialiserTest();
+			Cursor ue = uDAO.ueById(course_id);
+			uDAO.close();
+			
+			String descriptionUE = ue.getString(5);
 			description.setText(descriptionUE);
 		}
 		else
 			System.out.println("Les données ne sont pas passées entre les deux activités au clic sur l'UE");
 	}
 	
-	public void comment() {
+	public void comment(View view) {
 		Intent commentEcole = new Intent(DescriptionUEActivity.this, CommentActivity.class);
-		commentEcole.putExtra("course_id", descriptif);
+		commentEcole.putExtra("course_id", course_id);
 		startActivity(commentEcole);
 	}
 

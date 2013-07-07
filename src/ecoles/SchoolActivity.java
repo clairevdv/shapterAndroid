@@ -86,7 +86,7 @@ public class SchoolActivity extends Activity implements OnItemSelectedListener {
 		ListView listView = (ListView) findViewById(R.id.listViewEcoles);
 		listView.setAdapter(EcoleAdapter);
 
-		// On ouvre la vue de description au clic sur l'UE
+		// On ouvre la vue de description au clic sur l'ecole
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
 				// On recupere la description a afficher
@@ -128,7 +128,6 @@ public class SchoolActivity extends Activity implements OnItemSelectedListener {
 			int pos, long id) {
 			Cursor cursor = (Cursor) parent.getItemAtPosition(pos);
 			pays = cursor.getString(cursor.getColumnIndexOrThrow("country"));
-			System.out.println(pays);
 			afficherEcoles();
 	}
 	public void onNothingSelected(AdapterView<?> parent) {}

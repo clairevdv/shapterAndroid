@@ -99,11 +99,12 @@ public class UEActivity extends Activity implements OnItemSelectedListener {
 			public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
 				// On recupere la description a afficher
 				Cursor cursor = (Cursor) listView.getItemAtPosition(position);
-				String descriptif = cursor.getString(cursor.getColumnIndexOrThrow("description"));
-
+				int course_id = cursor.getInt(cursor.getColumnIndexOrThrow("_id"));
+				String course_id_string = String.valueOf(course_id);
+				
 				// On la lance dans une nouvelle activite
 				Intent descriptionUE = new Intent(UEActivity.this,DescriptionUEActivity.class);
-				descriptionUE.putExtra("descriptionUE", descriptif);
+				descriptionUE.putExtra("course_id", course_id_string);
 				startActivity(descriptionUE);
 				finish();
 			}

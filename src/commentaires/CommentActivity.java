@@ -1,4 +1,4 @@
-package Commentaires;
+package commentaires;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -35,10 +35,10 @@ public class CommentActivity extends Activity {
 		if (intent != null) {
 			String id = intent.getStringExtra("course_id");
 			course_id = Integer.valueOf(id);
+			afficherCommentaires(course_id);
 		}
 		else
-			System.out.println("Les données ne sont pas passées entre les deux activités au clic sur l'UE"); 
-		afficherCommentaires(course_id);	
+			System.out.println("Les données ne sont pas passées entre les deux activités au clic sur l'UE"); 	
 	}
 
 	private void afficherCommentaires(int course_id) {
@@ -46,11 +46,11 @@ public class CommentActivity extends Activity {
 		Cursor listeCommentAffichage = cDAO.tableAffichageComment(course_id);
 		String[] colonnes = new String[] {"student_id", "comment"};
 		int[] textViewAModifier = new int[] {
-				R.id.pays,
-				R.id.nomEcole,
+				R.id.student_id,
+				R.id.commentaire,
 		};
 		CommentAdapter = new SimpleCursorAdapter(
-				this, R.layout.liste_ecoles,
+				this, R.layout.commentaire,
 				listeCommentAffichage,
 				colonnes,
 				textViewAModifier,

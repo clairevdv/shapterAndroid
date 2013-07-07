@@ -44,18 +44,18 @@
         <activity
             android:name="ue.DescriptionUEActivity"
             android:label="@string/title_activity_description_ue"
-            android:parentActivityName="DiscoveryActivity" >
+            android:parentActivityName="UEActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="DiscoveryActivity" />
+                android:value="UEActivity" />
         </activity>
         <activity
             android:name="com.shapter.LogedActivity"
             android:label="@string/title_activity_loged"
-            android:parentActivityName="LoginActivity" >
+            android:parentActivityName="MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="LoginActivity" />
+                android:value="MainActivity" />
         </activity>
         <activity
             android:name="com.shapter.DiscoveryActivity"
@@ -68,18 +68,18 @@
         <activity
             android:name="ecoles.SchoolActivity"
             android:label="@string/title_activity_school"
-            android:parentActivityName="com.shapter.DiscoveryActivity" >
+            android:parentActivityName="com.shapter.LogedActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.shapter.DiscoveryActivity" />
+                android:value="com.shapter.LogedActivity" />
         </activity>
         <activity
             android:name="ecoles.DescriptionEcoleActivity"
             android:label="@string/title_activity_description_ecole"
-            android:parentActivityName="com.shapter.DiscoveryActivity" >
+            android:parentActivityName="com.shapter.SchoolActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.shapter.DiscoveryActivity" />
+                android:value="com.shapter.SchoolActivity" />
         </activity>
         <activity
             android:name="login.OubliMdpActivity"
@@ -98,20 +98,16 @@
                 android:value="LoginActivity" />
         </activity>
         <activity
-            android:name="login.PreferencesActivity"
-            android:label="@string/title_activity_profil" >
-        </activity>
-        <activity
             android:name="login.ProfilActivity"
             android:label="@string/title_activity_profil" >
         </activity>
         <activity
-            android:name="login.PhotoActivity"
-            android:label="@string/title_activity_photo"
-            android:parentActivityName="login.ProfilActivity" >
+            android:name="commentaires.CommentActivity"
+            android:label="@string/title_activity_comment"
+            android:parentActivityName="ue.DescriptionUEActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="login.ProfilActivity" />
+                android:value="ue.DescriptionUEActivity" />
         </activity>
     </application>
 
