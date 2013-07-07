@@ -1,21 +1,23 @@
 package eleves;
 
 public class Eleve {
-	private int user_ptr_id;
+	private int _id;
 	private int student_year;
 	private int school;
 	private String personal_desc;
-	
+
 	public Eleve(){};
-	
-	public Eleve(int _user_ptr_id, int _student_year, int _school) {
-		this.user_ptr_id = _user_ptr_id;
+
+	public Eleve(int _student_year, int _school) {
 		this.student_year = _student_year;
 		this.school = _school;
 	}
-	
-	public int getId () { return user_ptr_id;}
-	public void setId (int _user_ptr_id) { this.user_ptr_id = _user_ptr_id;};
+
+	public void addDesc(String description){
+		this.personal_desc = description;
+	}
+
+	public int getId () { return _id;}
 	public int getYear () { return student_year;}
 	public void setYear (int _year) { this.student_year = _year;}
 	public int getSchool () { return school;}

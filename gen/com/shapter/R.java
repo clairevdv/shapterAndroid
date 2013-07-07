@@ -83,30 +83,32 @@ public final class R {
     }
     public static final class layout {
         public static final int activity_comment=0x7f030000;
-        public static final int activity_description_ecole=0x7f030001;
-        public static final int activity_description_ue=0x7f030002;
-        public static final int activity_discovery=0x7f030003;
-        public static final int activity_inscription=0x7f030004;
-        public static final int activity_loged=0x7f030005;
-        public static final int activity_login=0x7f030006;
-        public static final int activity_main=0x7f030007;
-        public static final int activity_oubli_mdp=0x7f030008;
-        public static final int activity_profil=0x7f030009;
-        public static final int activity_school=0x7f03000a;
-        public static final int activity_ue=0x7f03000b;
-        public static final int commentaire=0x7f03000c;
-        public static final int liste_ecoles=0x7f03000d;
-        public static final int liste_ue=0x7f03000e;
+        public static final int activity_description_commentaire=0x7f030001;
+        public static final int activity_description_ecole=0x7f030002;
+        public static final int activity_description_ue=0x7f030003;
+        public static final int activity_discovery=0x7f030004;
+        public static final int activity_inscription=0x7f030005;
+        public static final int activity_loged=0x7f030006;
+        public static final int activity_login=0x7f030007;
+        public static final int activity_main=0x7f030008;
+        public static final int activity_oubli_mdp=0x7f030009;
+        public static final int activity_profil=0x7f03000a;
+        public static final int activity_school=0x7f03000b;
+        public static final int activity_ue=0x7f03000c;
+        public static final int commentaire=0x7f03000d;
+        public static final int liste_ecoles=0x7f03000e;
+        public static final int liste_ue=0x7f03000f;
     }
     public static final class menu {
         public static final int action_bar=0x7f080000;
         public static final int comment=0x7f080001;
+        public static final int description_commentaire=0x7f080002;
     }
     public static final class string {
-        public static final int action_forgot_password=0x7f06001b;
+        public static final int action_forgot_password=0x7f06001c;
         public static final int action_settings=0x7f060001;
-        public static final int action_sign_in_register=0x7f060019;
-        public static final int action_sign_in_short=0x7f06001a;
+        public static final int action_sign_in_register=0x7f06001a;
+        public static final int action_sign_in_short=0x7f06001b;
         public static final int app_name=0x7f060000;
         public static final int bouton_comments=0x7f060006;
         public static final int bouton_ecoles=0x7f060005;
@@ -114,43 +116,44 @@ public final class R {
         public static final int bouton_ue=0x7f060004;
         public static final int category_profil=0x7f06000c;
         public static final int discover=0x7f060003;
-        public static final int error_field_required=0x7f060020;
-        public static final int error_incorrect_password=0x7f06001f;
-        public static final int error_invalid_email=0x7f06001d;
-        public static final int error_invalid_password=0x7f06001e;
+        public static final int error_field_required=0x7f060021;
+        public static final int error_incorrect_password=0x7f060020;
+        public static final int error_invalid_email=0x7f06001e;
+        public static final int error_invalid_password=0x7f06001f;
         public static final int hello_world=0x7f060002;
         public static final int identification=0x7f060009;
         public static final int image=0x7f06000f;
-        public static final int inscription=0x7f060018;
-        public static final int login_progress_signing_in=0x7f06001c;
+        public static final int inscription=0x7f060019;
+        public static final int login_progress_signing_in=0x7f06001d;
         public static final int mdp=0x7f06000b;
-        public static final int menu_ecole=0x7f060022;
-        public static final int menu_eleves=0x7f060023;
-        public static final int menu_login=0x7f060024;
-        public static final int menu_plus=0x7f060025;
-        public static final int menu_ue=0x7f060021;
+        public static final int menu_ecole=0x7f060023;
+        public static final int menu_eleves=0x7f060024;
+        public static final int menu_login=0x7f060025;
+        public static final int menu_plus=0x7f060026;
+        public static final int menu_ue=0x7f060022;
         public static final int nom=0x7f06000d;
-        public static final int oubli_mdp=0x7f060017;
+        public static final int oubli_mdp=0x7f060018;
         public static final int photoDesc=0x7f060012;
         public static final int prefs=0x7f060010;
         public static final int prenom=0x7f06000e;
-        public static final int prompt_mdp=0x7f060016;
+        public static final int prompt_mdp=0x7f060017;
         /**  Strings related to login 
          */
-        public static final int prompt_username=0x7f060015;
+        public static final int prompt_username=0x7f060016;
         public static final int recherche=0x7f060008;
         public static final int title_activity_comment=0x7f060013;
-        public static final int title_activity_description_ecole=0x7f06002b;
-        public static final int title_activity_description_ue=0x7f060028;
-        public static final int title_activity_discovery=0x7f060026;
-        public static final int title_activity_inscription=0x7f06002d;
-        public static final int title_activity_loged=0x7f06002a;
-        public static final int title_activity_login=0x7f060014;
-        public static final int title_activity_oubli_mdp=0x7f06002c;
+        public static final int title_activity_description_commentaire=0x7f060014;
+        public static final int title_activity_description_ecole=0x7f06002c;
+        public static final int title_activity_description_ue=0x7f060029;
+        public static final int title_activity_discovery=0x7f060027;
+        public static final int title_activity_inscription=0x7f06002e;
+        public static final int title_activity_loged=0x7f06002b;
+        public static final int title_activity_login=0x7f060015;
+        public static final int title_activity_oubli_mdp=0x7f06002d;
         public static final int title_activity_photo=0x7f060011;
-        public static final int title_activity_profil=0x7f06002e;
-        public static final int title_activity_school=0x7f060029;
-        public static final int title_activity_ue=0x7f060027;
+        public static final int title_activity_profil=0x7f06002f;
+        public static final int title_activity_school=0x7f06002a;
+        public static final int title_activity_ue=0x7f060028;
         public static final int username=0x7f06000a;
     }
     public static final class style {

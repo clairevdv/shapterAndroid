@@ -20,6 +20,7 @@ public class UserDAO extends DAOBase {
 	private static final String UTILISATEUR = "username";
 	private static final String PRENOM = "first_name";
 	private static final String NOM = "last_name";
+	private static final String ELEVE ="student_id";
 	private static final String MAIL = "email";
 	private static final String PHOTO = "photo";
 	private static final String MDP = "password";
@@ -43,10 +44,11 @@ public class UserDAO extends DAOBase {
 		else {
 			//Création d'un ContentValues pour ajouter l'utilisateur
 			ContentValues values = new ContentValues();
-			// On ajoute dedans les valeurs de l'School
+			// On ajoute dedans les valeurs de l'utilisateur
 			values.put(UTILISATEUR, newUser.getUserName());
 			values.put(PRENOM, newUser.getFirstName());
 			values.put(NOM, newUser.getLastName());
+			values.put(ELEVE, newUser.getStudent());
 			values.put(MAIL, newUser.getEmail());
 			values.put(MDP, newUser.getPassword());
 			//on insère l'objet dans la BDD via le ContentValues
@@ -60,6 +62,10 @@ public class UserDAO extends DAOBase {
 		User u2 = new User("sam.tardieu", "Samuel", "Tardieu", "tardieu@telecom-paristech.fr", "1234");
 		User u3 = new User("tibere", "Adrien", "Tibere", "adrien.tibere-inglesse@telecom-paristech.fr", "test");
 
+		u1.setStudent(1);
+		u2.setStudent(2);
+		u3.setStudent(3);
+		
 		insertUser(u1);
 		insertUser(u2);
 		insertUser(u3);

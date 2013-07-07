@@ -1,5 +1,8 @@
 package commentaires;
 
+import login.UserDAO;
+import ue.DescriptionUEActivity;
+import ue.UEActivity;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -10,6 +13,9 @@ import android.support.v4.app.NavUtils;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.shapter.R;
@@ -17,6 +23,7 @@ import com.shapter.R;
 public class CommentActivity extends Activity {
 
 	private CommentDAO cDAO;
+	private UserDAO uDAO;
 	private SimpleCursorAdapter CommentAdapter;
 	private int course_id;
 
@@ -27,10 +34,14 @@ public class CommentActivity extends Activity {
 		// Show the Up button in the action bar.
 		setupActionBar();
 
+		uDAO = new UserDAO(this);
+		uDAO.open();
+		uDAO.initialiserUsers();
+
 		cDAO = new CommentDAO(this);
 		cDAO.open();
 		cDAO.initialiserTest();
-		
+
 		Intent intent = getIntent();
 		if (intent != null) {
 			String id = intent.getStringExtra("course_id");
@@ -44,22 +55,45 @@ public class CommentActivity extends Activity {
 	private void afficherCommentaires(int course_id) {
 		// On cree un adapteur de la bdd a une listView
 		Cursor listeCommentAffichage = cDAO.tableAffichageComment(course_id);
-		String[] colonnes = new String[] {"student_id", "comment"};
-		int[] textViewAModifier = new int[] {
-				R.id.student_id,
-				R.id.commentaire,
-		};
-		CommentAdapter = new SimpleCursorAdapter(
-				this, R.layout.commentaire,
-				listeCommentAffichage,
-				colonnes,
-				textViewAModifier,
-				0);
-		CommentAdapter.notifyDataSetChanged ();
+		//S'il n'y a pas de commentaire enregistré
+		if(listeCommentAffichage == null) {
 
-		// On assigne l'adapteur a la ListView
-		ListView listView = (ListView) findViewById(R.id.listViewComment);
-		listView.setAdapter(CommentAdapter);
+		}
+		//S'il y a des commentaires enregistrés
+		else{
+			String[] colonnes = new String[] {"first_name", "comment"};
+			int[] textViewAModifier = new int[] {
+					R.id.student_id,
+					R.id.commentaire,
+			};
+			CommentAdapter = new SimpleCursorAdapter(
+					this, R.layout.commentaire,
+					listeCommentAffichage,
+					colonnes,
+					textViewAModifier,
+					0);
+			CommentAdapter.notifyDataSetChanged ();
+
+			// On assigne l'adapteur a la ListView
+			ListView listView = (ListView) findViewById(R.id.listViewComment);
+			listView.setAdapter(CommentAdapter);
+
+			//On ouvre la vue de description au clic sur le commentaire
+			listView.setOnItemClickListener(new OnItemClickListener() {
+				public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
+					// On recupere la description a afficher
+					Cursor cursor = (Cursor) listView.getItemAtPosition(position);
+					int course_id = cursor.getInt(cursor.getColumnIndexOrThrow("_id"));
+					String course_id_string = String.valueOf(course_id);
+
+					// On la lance dans une nouvelle activite
+					Intent descriptionUE = new Intent(UEActivity.this,DescriptionUEActivity.class);
+					descriptionUE.putExtra("course_id", course_id_string);
+					startActivity(descriptionUE);
+					finish();
+				}
+			});
+		}
 	}
 
 	/**

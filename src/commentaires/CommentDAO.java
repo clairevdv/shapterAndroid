@@ -12,6 +12,7 @@ public class CommentDAO extends DAOBase{
 	}
 
 	private static final String TABLE_NAME = "app_comment";
+	private static final String TABLE_NAME_USER = "auth_user";
 	private static final String TEXTE = "comment";
 	private static final String COURS = "course_id";
 	private static final String STUDENT = "student_id";
@@ -48,7 +49,7 @@ public class CommentDAO extends DAOBase{
 		Comment e5 = new Comment("Ce cours n'était pas exactement ce à quoi je m'attendais. Je m'attendais à un cours sur la théorie et non pas uniquement des travaux pratiques", 2, 1);
 		Comment e6 = new Comment("Excellent prof, très ouvert aux questions, réponds vite et bien au mail, prêt à aider dans vos divers projets", 3, 1);
 		Comment e7 = new Comment("Le rayon de soleil de ma 2ème année ! Un cours que j'avais pris plus par curiosité que par passion, et je fus comblé. D'excellents profs, la crème de la crème dans le domaine", 3, 2);
-	
+
 		insertComment(e1);
 		insertComment(e2);
 		insertComment(e3);
@@ -56,7 +57,7 @@ public class CommentDAO extends DAOBase{
 		insertComment(e5);
 		insertComment(e6);
 		insertComment(e7);
-		
+
 	}
 
 	public void updateComment(String texte, int cours, int student){
@@ -71,9 +72,8 @@ public class CommentDAO extends DAOBase{
 	}
 
 	public Cursor tableAffichageComment (int course_id) {
-		System.out.println("Affichons la database");
-		Cursor c = mDb.rawQuery("select rowid _id,* from " + TABLE_NAME +" where " + COURS + " like ?",new String[]{String.valueOf(course_id)});
-
+		Cursor c = mDb.rawQuery("select * from " + TABLE_NAME + " c INNER JOIN " + TABLE_NAME_USER + " u ON c.student_id=u.student_id where c." + COURS + " like ?",new String[]{String.valueOf(course_id)});
+		
 		if(c.getCount() == 0) {
 			System.out.println("Aucun commentaire n'a été écrit pour le cours choisi");
 			return null;

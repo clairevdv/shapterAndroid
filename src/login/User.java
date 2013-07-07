@@ -10,7 +10,7 @@ public class User {
 	private String email;
 	private Bitmap photo;
 	private String password;
-	private int id_student;
+	private int student_id;
 	private int is_staff;
 	private int is_active;
 	private int is_superuser;
@@ -24,7 +24,7 @@ public class User {
 		this.last_name = _lastname;
 		this.email = _email;
 		this.password = _password;
-		id_student = -1;
+		student_id = -1;
 		}
 
 	public int getId () { return id;}
@@ -41,8 +41,8 @@ public class User {
 	public void setPhoto (Bitmap _photo) { this.photo = _photo;};
 	public String getPassword () { return password;}
 	public void setPassword (String _password) { this.password = _password;}
-	public int getStudent () { return id_student;}
-	public void setStudent(int _id_student){ this.id_student = _id_student;}
+	public int getStudent () { return student_id;}
+	public void setStudent(int _student_id){ this.student_id = _student_id;}
 	public int isStaff () { return is_staff;}
 	public void setStaff(int _is_staff){ this.is_staff = _is_staff;}
 	public int isActive () { return is_active;}

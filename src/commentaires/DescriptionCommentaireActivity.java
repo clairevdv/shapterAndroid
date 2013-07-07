@@ -1,37 +1,25 @@
-package ecoles;
-
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.os.Build;
-import android.os.Bundle;
-import android.support.v4.app.NavUtils;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.webkit.WebView;
+package commentaires;
 
 import com.shapter.R;
+import com.shapter.R.layout;
+import com.shapter.R.menu;
 
-public class DescriptionEcoleActivity extends Activity {
-	private WebView mWebView = null;
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.support.v4.app.NavUtils;
+import android.annotation.TargetApi;
+import android.os.Build;
+
+public class DescriptionCommentaireActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_description_ecole);
-		// Show the Up button in the action bar
+		setContentView(R.layout.activity_description_commentaire);
+		// Show the Up button in the action bar.
 		setupActionBar();
-
-		mWebView = (WebView) findViewById(R.id.webview_description_ecole);
-		mWebView.loadUrl("http://www.siteduzero.com");
-		
-		/*TextView description = (TextView) findViewById(R.id.descriptionUE);
-		Intent intent = getIntent();
-		if (intent != null) {
-			String descriptionUE = intent.getStringExtra("descriptionUE");
-			description.setText(descriptionUE);
-		}
-		else
-			System.out.println("Les données ne sont pas passées entre les deux activités au clic sur l'UE"); */
 	}
 
 	/**
@@ -47,7 +35,7 @@ public class DescriptionEcoleActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.action_bar, menu);
+		getMenuInflater().inflate(R.menu.description_commentaire, menu);
 		return true;
 	}
 

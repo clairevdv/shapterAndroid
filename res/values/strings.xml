@@ -21,5 +21,6 @@
     <string name="title_activity_photo">Choisir sa photo</string>
     <string name="photoDesc">Photo de profil utilisateur</string>
     <string name="title_activity_comment">Commentaires sur l\'UE</string>
+    <string name="title_activity_description_commentaire">Commentaire de l\'UE</string>
 
 </resources>

@@ -109,6 +109,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ue.DescriptionUEActivity" />
         </activity>
+        <activity
+            android:name="commentaires.DescriptionCommentaireActivity"
+            android:label="@string/title_activity_description_commentaire"
+            android:parentActivityName="commentaires.CommentActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="commentaires.CommentActivity" />
+        </activity>
     </application>
 
 </manifest>
